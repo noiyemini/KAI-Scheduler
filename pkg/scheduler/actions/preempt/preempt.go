@@ -128,7 +128,7 @@ func attemptToPreemptForPreemptor(
 
 func buildFilterFuncForPreempt(ssn *framework.Session, preemptor *podgroup_info.PodGroupInfo) func(*podgroup_info.PodGroupInfo) bool {
 	return func(job *podgroup_info.PodGroupInfo) bool {
-		if !job.IsPreemptibleJob() {
+		if !job.IsPreemptibleJob() && !job.IsSemiPreemptibleJob() {
 			return false
 		}
 
